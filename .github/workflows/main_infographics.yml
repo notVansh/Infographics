@@ -60,4 +60,4 @@ jobs:
         with:
           app-name: 'Infographics'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_DBB00938A168430F85A2882EEFF0C7BE }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_5D5477237E484AF1BE0C32F09DA0BC8D }}
