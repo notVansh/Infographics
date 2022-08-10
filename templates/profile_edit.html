@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% load static %}
+
+    <head>
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+            integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <style>
+            .inputfile {
+                visibility: hidden;
+                margin-bottom: -39px;
+            }
+        </style>
+    </head>
+
+    <body style="color: #000;">
+        <form method="post" class="profileForm container" action="{% url 'saveEditprofile' id=request.user.profile.id %}" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="fluid py-4" style="">
+                <div class="Profilecover">
+                    <label for="id_cover" style="cursor: pointer; font-size: 19px; text-align: left; width: 100%;" > Change Cover Photo</label>
+                    <img src="{{ request.user.profile.cover.url }}" class="" width="auto" height="100">
+                    <input type="file" name="cover" id="id_cover" accept="image/*" class="inputfile">
+                </div>
+
+                <div class="col-lg-3" style="float: right;">
+                    <img src="{{ request.user.profile.pfp.url }}" class="bd-placeholder-img rounded-circle" width="170" height="170">
+                    <input type="file" name="pfp" accept="image/*" id="id_pfp" class="inputfile">
+                    <label for="id_pfp" style="cursor: pointer; font-size: 19px;"> Change Profile Photo</label>
+                </div>
+
+                <div class="form-row py-2">
+                    <!-- first name -->
+                    <div class="col-md-4 mb-3 col-xs-10" style="margin-right: 60px;">
+                        <label for="id_first_name">First name</label>
+                        <input type="text" class="form-control" value="{{ request.user.first_name }}" name="first_name" required id="id_first_name">
+                    </div>
+                    <!-- last name -->
+                    <div class="col-md-4 mb-3 ">
+                        <label for="id_last_name">Last name</label>
+                        <input type="text" class="form-control" value="{{ request.user.last_name }}" name="last_name" required id="id_last_name">
+                    </div>
+                </div>
+
+                <!-- username -->
+                <div class="form-row py-2">
+                    <div class="col-md-4 mb-3" style="margin-right: 60px;">
+                        <label for="id_username">Username</label>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                            </div>
+                            <input type="text" class="form-control" id="id_username" name="username"
+                             aria-describedby="inputGroupPrepend2" value="{{ request.user.username }}" required>
+                        </div>
+                    </div>
+                </div>
+                <!-- About -->
+                <div class="col-md-10 mb-3 py-2" style="margin-left: -14px;">
+                    <label for="id_desc">About</label>
+                    <textarea type="text" class="form-control" name="desc" style="height: 151px; resize: none;" required id="id_desc">{{ request.user.profile.desc }}</textarea>
+                </div>
+
+                <div class="form-row py-2">
+                    <!-- email -->
+                    <div class="col-md-3 mb-3">
+                        <label for="id_email">E-mail</label>
+                        <input type="email" class="form-control" name="email" value="{{ request.user.email }}" id="id_email" required>
+                    </div>
+                </div>
+                <button class="btn btn-primary" type="submit"  style="border-radius: 30px;">Update Profile</button>
+        </form>
+    </body>
+
+{% endblock %}

@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% load static %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <img style="height: 500px; width: auto;" src="{{ photo.image.url }}" alt="">
+        </div>
+        <div>
+            {% if liked == False %}
+                <br>
+                <div class="likes"><b><a href="{% url 'like' photo.id %}">Like</a><div>{{ photo.likes.count }}</div></b></div>
+                
+            {% else %}
+                <br>
+                <div class="likes"><b><a href="{% url 'unlike' photo.id %}">Unlike</a><div>{{ photo.likes.count }}</div></b></div>
+
+            {% endif %}
+            
+        </div>
+        <div class="post-a-comment-area mt-70">
+            <h5>Leave a Comment</h5>
+            <!-- Reply Form -->
+            <form action="{% url 'commentpinsave' photo.id %}" method="post">
+                <div class="row">
+                    {% csrf_token %}
+                    <div class="col-12">
+                        <div class="group">
+                            <textarea name="pin_comments" id="id_pin_comments" required></textarea>
+                            <span class="highlight"></span>
+                            <span class="bar"></span>
+                            <label id="id_pin_comments">Comment</label>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <button type="submit" class="btn original-btn">Comment</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <!-- Comment Area Start -->
+        <div class="comment_area clearfix mt-70">
+            <h5 class="title">Comments</h5>
+
+            <ol>
+                {% for i in photo.Comments.all %}
+                <!-- Single Comment Area -->
+                <li class="single_comment_area">
+                    <!-- Comment Content -->
+                    <div class="comment-content d-flex">
+                        <!-- Comment Author -->
+                        <div class="comment-author">
+                            <img src="{{ i.pin_comment_user.profile.pfp.url }}" alt="author">
+                        </div>
+                        <!-- Comment Meta -->
+                        <div class="comment-meta">
+                            <a href="#" class="post-date">{{ i.pin_comment_created }}</a>
+                            <p><a href="{% url 'profile' i.pin_comment_user.id %}" class="post-author">{{ i.pin_comment_user }}</a></p>
+                            <p>{{ i.pin_comments }}</p>
+                        </div>
+                    </div>
+                </li>
+                {% endfor %}
+            </ol>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

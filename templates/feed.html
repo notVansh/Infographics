@@ -1,0 +1,32 @@
+{% block content %}
+
+{% load static %}
+
+<link rel="stylesheet" href="/static/css/feed.css">
+
+<div class="feed-blog">
+<div class="main-text">Here goes your Blogs:</div>
+{% for i in Blog %}
+    <!-- {% if i.user.username == user.username %} -->
+        <div class="blog-user">
+            <div class="title-blog">
+                <a href="{% url 'readblog' i.id %}">{{ i.title }}</a>
+            </div>
+            <div class="desc-blog">
+                {{ i.text|truncatechars:100 }}  
+            </div>
+            <div class="blog-btns">
+                <div class="edit-blog">
+                    <a href="{% url 'editblog' i.id %}"><i class="fal fa-edit"></i> Edit</a>
+                </div>
+                <div class="delete-blog">
+                    <form action="{% url 'userpostdelete' i.id %}" method="GET">
+                        <button type="submit"><i class="fad fa-trash-alt"></i> Delete</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    <!-- {% endif %} -->
+{% endfor %}
+</div>
+{% endblock %}

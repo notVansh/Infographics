@@ -1,0 +1,250 @@
+/*GLOBAL STYLES*/
+*,
+*::before,
+*::after{
+    padding: 0;
+    margin: 0;
+    box-sizing: inherit;
+}
+
+/*
+color scheme:
+
+Dark: #072F5F
+
+a little light: #1261A0
+
+lighter: #3895D3
+
+lightest: #58CCED
+
+white: #FFF
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=PT+Sans:wght@700&display=swap');
+
+html{
+    font-family: 'PT Sans', sans-serif;
+    font-size: 10px;
+    box-sizing: border-box;
+}
+
+a{
+    text-decoration: none;
+    color: #fff;
+}
+
+a:active{
+    color: #fff;
+}
+
+ul{
+    list-style: none;
+}
+
+p{
+    font-size: 1.6rem;
+}
+
+img{
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+}
+
+section{
+    padding: 5rem 0;
+}
+
+.container{
+    width: 100%;
+    max-width: 98rem;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+}
+
+button{
+    padding: 1rem 5rem;
+    background: #1261A0;
+    border: none;
+    color: #fff;
+    font-size: 1.2rem;
+    margin-top: 10px;
+    cursor: pointer;
+    transition: all .6s;
+}
+
+button:focus{
+    outline: none;
+}
+
+button:hover{
+    background: #3895D3;
+}
+
+/*login-signup*/
+.login-signup{
+
+}
+
+.quote{
+    font-size: 4.5em;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: #fff;
+    padding: 1rem;
+    position: absolute;
+    top: 50%;
+    left: 10%;
+    transform: translateY(-50%);
+    cursor: default;
+    width: 20px;
+}
+
+.login{
+    z-index: 1;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%) scale(.9);
+    border-radius: 10px;
+    box-shadow: 0 0 50px #0a0a0a;
+    width: 800px;
+    transition: all .65s;
+    display: flex;
+    justify-content: space-between;
+}
+
+.register{
+    z-index: 1;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    display: flex;
+    justify-content: space-between;
+    border-radius: 10px;
+    box-shadow: 0 0 50px #000000;
+    width: 800px;
+    text-align: center;
+    transition: all .65s;
+    overflow: hidden;
+}
+
+.side-img{
+    width: 100%;
+    background: linear-gradient(90deg, rgba(0, 35, 63, 0.808) 0%, rgba(0, 35, 63, 0.808) 100%);
+    background-size: cover;
+}
+
+.register-inside, .login-inside{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.register-inside>h1,
+.login-inside>h1{
+    font-size: 3rem;
+    text-align: center;
+    color: #fff;
+    text-transform: uppercase;
+    cursor: default;
+    padding: 1rem;
+    background: #1261A0;
+    margin-bottom: 3rem;
+    width: 100%;
+}
+
+.register>h2, .login>h2{
+    font-size: 2rem;
+    text-align: center;
+    color: rgb(201, 24, 24):
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+form>*{
+    margin-bottom: 20px;
+}
+
+input{
+    outline: none;
+    border: none;
+    border: 1px solid rgb(197, 197, 197);
+    background: #fff;
+    transition: all .6s;
+    width: 150%;
+    padding: 1rem 2rem;
+    display: inline-block;
+}
+
+input:focus{
+    outline: none;
+    background: #fff;
+    border-bottom: 1px solid #165baa;
+    background: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.250);
+}
+
+input::placeholder{
+    transition: all .6s;
+}
+
+input:focus::placeholder{
+    transform: translateY(-30px);
+}
+
+.login-with{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    margin-top: 4rem;
+}
+
+.login-with>*{
+    width: 100%;
+    text-align: center;
+    margin-bottom: 2rem;
+    padding: 1rem 4rem;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.144);
+    cursor: pointer;
+    font-weight: 700;
+    border-radius: 5px;
+}
+
+.facebook:hover, .facebook:active{
+    color: #fff;
+    background: rgba(66,133,244,1);
+}
+
+.google:hover, .google:active{
+    color: #fff;
+    background: rgba(244,180,0,1);
+   }
+
+.login-btn, .register-btn{
+    font-size: 1.5em;
+    text-align: center;
+    cursor: pointer;
+    color: #fff;
+    display: inline-block;
+    width: 65%;
+    padding: 1rem;
+    background: #1261A0;
+    transition: all .5s;
+    margin-bottom: 2rem;
+}
+
+.login-btn:hover, .register-btn:hover{
+    background: #3895D3;
+}

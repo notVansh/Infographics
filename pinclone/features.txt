@@ -1,0 +1,19 @@
+Infography Corner
+Urvashi:
+login/logout/signup
+Blog category
+user profile(Pfp,followers)
+follow/unfollow
+
+Rutika:
+blog()
+news
+pictures gallery(User,Image,caption(50))
+queries_form (datbase)
+
+Vansh:
+email verification
+search
+comment
+feedback
+likes

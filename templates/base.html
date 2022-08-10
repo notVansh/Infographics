@@ -1,0 +1,232 @@
+{% load static %}
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+    <!-- Title -->
+    <title>Infography</title>
+
+    <!-- Favicon -->
+    <link rel="icon" href="{% static 'img/core-img/favicon.ico' %}">
+
+    <!-- Style CSS -->
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+
+</head>
+
+<!-- ##### Header Area End ##### -->
+<!-- Preloader -->
+<div id="preloader">
+    <div class="preload-content">
+        <div id="original-load"></div>
+    </div>
+</div>
+
+<!-- ##### Header Area Start ##### -->
+<header class="header-area">
+
+    <!-- Logo Area
+    <div class="logo-area text-center">
+        <div class="container h-100">
+            <div class="row h-100 align-items-center">
+                <div class="col-12">
+                    <a href="{% url 'home' %}" class="original-logo"><img src="{% static 'logoinfo1.png' %}" style="height: 100px;" alt=""></a>
+                </div>
+            </div>
+        </div>
+    </div> -->
+
+    <!-- Nav Area -->
+    <div class="original-nav-area" id="stickyNav">
+        <div class="classy-nav-container breakpoint-off">
+            <div class="container">
+                <!-- Classy Menu -->
+                <nav class="classy-navbar justify-content-between">
+
+                    <!-- Subscribe btn -->
+                    <div class="subscribe-btn">
+                        <a href="#" class="btn subscribe-btn" data-toggle="modal" data-target="#subsModal">Subscribe</a>
+                    </div>
+
+                    <!-- Navbar Toggler -->
+                    <div class="classy-navbar-toggler">
+                        <span class="navbarToggler"><span></span><span></span><span></span></span>
+                    </div>
+
+                    <!-- Menu -->
+                    <div class="classy-menu" id="originalNav">
+                        <!-- close btn -->
+                        <div class="classycloseIcon">
+                            <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
+                        </div>
+
+                        <!-- Nav Start -->
+                        <div class="classynav">
+                            <ul>
+                                <li><a href="{% url 'home' %}">Home</a></li>
+                                <li><a href="{% url 'picgallery' %}">Pins</a></li>
+                                <li><a href="#">Menu</a>
+                                    <ul class="dropdown">
+                                        <li><a href="{% url 'createblog' %}">Write Blog</a></li>
+                                        <li><a href="{% url 'uploadimage' %}">Create a Pin</a></li>
+                                        <li><a href="{% url 'contact' %}">Contact</a></li>
+                                        <li><a href="{% url 'aboutus' %}">About Us</a></li>
+                                    </ul>
+                                </li>
+                                {% if not user.is_authenticated %}
+                                    <li><a href="{% url 'signup' %}">Signup</a></li>
+                                    <li><a href="{% url 'signin' %}">SignIn</a></li>
+                                {% else %}
+                                    <li><a href="{% url 'profile' request.user.profile.id %}">{{ user.username }}</a></li>
+                                    <li><a href="{% url 'logout' %}">Logout</a></li>
+                                {% endif %}
+                            </ul>
+
+                            <!-- Search Form  -->
+                            <div id="search-wrapper">
+                                <form action="{% url 'searchblog' %}" autocomplete="off">
+                                    <input type="search" id="search" name="search" placeholder="Search something...">
+                                    <div id="close-icon"></div>
+                                    <input class="d-none" type="submit" value="">
+                                </form>
+                            </div>
+                        </div>
+                        <!-- Nav End -->
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+
+    <!-- Subscribe Modal -->
+    <div class="subscribe-newsletter-area">
+        <div class="modal fade" id="subsModal" tabindex="-1" role="dialog" aria-labelledby="subsModal" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <div class="modal-body">
+                        <h5 class="title">Subscribe to my newsletter</h5>
+                        <form action="{% url 'susbcribe' %}" class="newsletterForm" method="post">
+                            {% csrf_token %}
+                            <input type="email" name="email" id="subscribesForm2" placeholder="Your e-mail here">
+                            <button type="submit" class="btn original-btn">Subscribe</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% block content %}
+{% endblock %}
+
+<!-- ##### Footer Area Start ##### -->
+<footer class="footer-area text-center">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                
+                <!-- Footer Nav Area -->
+                <div class="classy-nav-container breakpoint-off">
+                    <!-- Classy Menu -->
+                    <nav class="classy-navbar justify-content-center">
+
+                        <!-- Navbar Toggler -->
+                        <div class="classy-navbar-toggler">
+                            <span class="navbarToggler"><span></span><span></span><span></span></span>
+                        </div>
+
+                        <!-- Menu -->
+                        <div class="classy-menu">
+
+                            <!-- close btn -->
+                            <div class="classycloseIcon">
+                                <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
+                            </div>
+
+                            <!-- Nav Start -->
+                            <div class="classynav">
+                                <ul>
+                                    <li><a href="#">Home</a></li>
+                                    <li><a href="#">About Us</a></li>
+                                    <li><a href="#">Lifestyle</a></li>
+                                    <li><a href="#">travel</a></li>
+                                    <li><a href="#">Music</a></li>
+                                    <li><a href="#">Contact</a></li>
+                                </ul>
+                            </div>
+                            <!-- Nav End -->
+                        </div>
+                    </nav>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+
+</footer>
+<!-- ##### Footer Area End ##### -->
+
+<div class="cool-facts-area section-padding-100-0 bg-img background-overlay" style="background-image: url(img/bg-img/b4.jpg);">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="single-blog-area blog-style-2 text-center mb-100">
+                    <!-- Blog Content -->
+                    <div class="single-blog-content">
+                        <div class="line"></div>
+                        <a href="#" class="post-tag">Lifestyle</a>
+                        <h4><a href="#" class="post-headline">Welcome to this Lifestyle blog</a></h4>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris tempus vestibulum mauris quis aliquam. Integer accumsan sodales odio, id tempus velit ullamcorper id. Quisque at erat eu libero consequat tempus. Quisque molestie convallis tempus. Ut semper purus metus, a euismod sapien sodales ac. Duis viverra eleifend fermentum. Donec sagittis lacus sit amet augue sodales, vel cursus enim tristique. Maecenas vitae massa ut est consectetur sagittis quis vitae tortor. Sed et massa vel.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <!-- Single Cool Facts Area -->
+            <div class="col-12 col-sm-6 col-lg-3">
+                <div class="single-cool-facts-area text-center mb-100">
+                    <h2><span class="counter">25</span></h2>
+                    <p>Awards won</p>
+                </div>
+            </div>
+            <!-- Single Cool Facts Area -->
+            <div class="col-12 col-sm-6 col-lg-3">
+                <div class="single-cool-facts-area text-center mb-100">
+                    <h2><span class="counter">12</span>K</h2>
+                    <p>FB Followers</p>
+                </div>
+            </div>
+            <!-- Single Cool Facts Area -->
+            <div class="col-12 col-sm-6 col-lg-3">
+                <div class="single-cool-facts-area text-center mb-100">
+                    <h2><span class="counter">9</span></h2>
+                    <p>Team members</p>
+                </div>
+            </div>
+            <!-- Single Cool Facts Area -->
+            <div class="col-12 col-sm-6 col-lg-3">
+                <div class="single-cool-facts-area text-center mb-100">
+                    <h2><span class="counter">16</span></h2>
+                    <p>Coffes/Day</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- jQuery (Necessary for All JavaScript Plugins) -->
+<script src="{%static 'js/jquery/jquery-2.2.4.min.js' %}"></script>
+<!-- Popper js -->
+<script src="{%static 'js/popper.min.js' %}"></script>
+<!-- Bootstrap js -->
+<script src="{%static 'js/bootstrap.min.js' %}"></script>
+<!-- Plugins js -->
+<script src="{%static 'js/plugins.js' %}"></script>
+<!-- Active js -->
+<script src="{%static 'js/active.js' %}"></script>

@@ -1,0 +1,137 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<body>
+    <!-- ##### Hero Area Start ##### -->
+    <div class="hero-area">
+        <!-- Hero Slides Area -->
+        <div class="hero-slides owl-carousel">
+            <!-- Single Slide -->
+            <div class="single-hero-slide bg-img" style="background-image: url({% static 'img/bg-img/b1.jpg' %});">
+                <div class="container h-100">
+                    <div class="row h-100 align-items-center">
+                        <div class="col-12">
+                            <div class="slide-content text-center">
+                                <div class="post-tag">
+                                    <a href="#" data-animation="fadeInUp">lifestyle</a>
+                                </div>
+                                <h2 data-animation="fadeInUp" data-delay="250ms"><a href="#">Take a look at last night’s party!</a></h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Single Slide -->
+            <div class="single-hero-slide bg-img" style="background-image:  url({% static 'img/bg-img/b2.jpg' %});">
+                <div class="container h-100">
+                    <div class="row h-100 align-items-center">
+                        <div class="col-12">
+                            <div class="slide-content text-center">
+                                <div class="post-tag">
+                                    <a href="#" data-animation="fadeInUp">lifestyle</a>
+                                </div>
+                                <h2 data-animation="fadeInUp" data-delay="250ms"><a href="single-post.html">Take a look at last night’s party!</a></h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Single Slide -->
+            <div class="single-hero-slide bg-img" style="background-image:  url({% static 'img/bg-img/b3.jpg' %});"">
+                <div class="container h-100">
+                    <div class="row h-100 align-items-center">
+                        <div class="col-12">
+                            <div class="slide-content text-center">
+                                <div class="post-tag">
+                                    <a href="#" data-animation="fadeInUp">lifestyle</a>
+                                </div>
+                                <h2 data-animation="fadeInUp" data-delay="250ms"><a href="single-post.html">Take a look at last night’s party!</a></h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ##### Hero Area End ##### -->
+
+    <br>
+    <br>
+    <br>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-lg-9">
+                <h3 class="text-center blogIt">Blog it up!</h3>
+                <br>    
+                <div class="blog-create">
+                    <form action="{% url 'saveblog' %}" autocomplete="off" method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <span>
+                            <label for="id_title">Title: </label>
+                            <input type="text" name="title" class="create-blogtitle" required id="id_title" maxlength="122">
+                        </span>
+                            <label for="id_text">Write what's on your mind: </label>
+                            <textarea name="text" cols="80" rows="38" required id="id_text" style="resize: none;"></textarea>
+                        <span class="option-Image-upload">
+                            <span>
+                                <label for="id_image" style="cursor: pointer; margin-bottom: 0;">Click me to upload an Image!</label>
+                                <input type="file" name="image" accept="/image*" id="id_image" hidden class="hidden">
+                            </span>
+                            <span>
+                                <label for="id_category" hidden>Category</label>
+                                <select class="" name="category" id="id_category">
+                                    <option value="" selected>Choose Category</option>
+                                    {% for i in categories %}
+                                        <option value="{{ i.id }}">{{ i.categoryTitle }}</option>
+                                    {% endfor %}
+                                </select>
+                            </span>
+                        </span>
+                        <span>
+                            <button type="submit" class="btn original-btn">Post</button>  
+                        </span>
+                    </form>
+                </div>
+            </div>
+
+            <!-- ##### Sidebar Area ##### -->
+            <div class="col-12 col-md-4 col-lg-3">
+                <div class="post-sidebar-area">
+
+                    <!-- Widget Area -->
+                    <div class="sidebar-widget-area">
+                        <form action="{% url 'searchblog' %}" class="search-form">
+                            <input type="search" name="search" id="searchForm" placeholder="Search">
+                            <input type="submit" value="submit">
+                        </form>
+                    </div>
+
+                    <!-- Widget Area -->
+                    <div class="sidebar-widget-area">
+                        <h5 class="title subscribe-title">Subscribe to my newsletter</h5>
+                        <div class="widget-content">
+                            <form action="#" class="newsletterForm">
+                                <input type="email" name="email" id="subscribesForm" placeholder="Your e-mail here">
+                                <button type="submit" class="btn original-btn">Subscribe</button>
+                            </form>
+                        </div>
+                    </div>
+
+                    <!-- Widget Area -->
+                    <div class="sidebar-widget-area">
+                        <h5 class="title">Advertisement</h5>
+                        <a href="#"><img src="{% static 'img/bg-img/add.gif' %}" alt=""></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+
+{% endblock %}
